@@ -12,3 +12,5 @@
   # Team Display
     * How to change team names
     * Not working with my skin
+
+<wiki:toc max_depth="1" />
