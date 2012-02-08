@@ -3,10 +3,10 @@
 
 
   # [Introduction]
-  # Skins
-    * Adding a Skin
-    * Uninstalling a Skin
-    * Creating your own Skin
+  # [Skins]
+    * [Skins#Adding a Skin]
+    * [Skins#Uninstalling a Skin]
+    * [Skins#Creating your own Skin]
   # Configs
     * Editing a Skins config
   # Team Display
