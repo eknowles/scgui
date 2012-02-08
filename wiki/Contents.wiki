@@ -2,7 +2,7 @@
 == Table of Contents ==
 
 
-  # Introduction
+  # [Introduction]
   # Skins
     * Adding a Skin
     * Uninstalling a Skin
