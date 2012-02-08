@@ -1,4 +1,3 @@
-#labels Featured
 = Introduction =
 
 These documents should have all the information you need to use the program and even make your own skins!
