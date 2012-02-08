@@ -3,12 +3,15 @@
 
 
   # [Introduction]
+
   # [Skins]
-    * [Skins#Adding_a_Skin]
-    * [Skins#Uninstalling_a_Skin]
-    * [Skins#Creating_your_own_Skin]
+    * Adding a Skin
+    * Uninstalling a Skin
+    * Creating your own Skin
+
   # Configs
     * Editing a Skins config
+
   # Team Display
     * How to change team names
     * Not working with my skin
