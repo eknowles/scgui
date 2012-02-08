@@ -4,9 +4,9 @@
 
   # [Introduction]
   # [Skins]
-    * [Skins#Adding a Skin]
-    * [Skins#Uninstalling a Skin]
-    * [Skins#Creating your own Skin]
+    * [Skins#Adding_a_Skin]
+    * [Skins#Uninstalling_a_Skin]
+    * [Skins#Creating_your_own_Skin]
   # Configs
     * Editing a Skins config
   # Team Display
