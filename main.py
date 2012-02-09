@@ -5,8 +5,9 @@ import shutil
 
 class scgui():
     def __init__(self):
-        self.steamname = "3fk"
-        self.skinspath = ""
+        self.steamname = "3ez"
+        self.skinspath = "C:\Program Files (x86)\KLUTCH\SCGUI\Skins"
+        self.installedskin = "Base"
         self.cspath=os.path.join(os.environ["ProgramFiles(x86)"],"Steam/steamapps",self.steamname,"counter-strike source")
         self.specsettings ={
                               "t1name":"", 
@@ -29,7 +30,9 @@ class scgui():
                               "overview_names":"", 
                                }
         self.resfiles=["Spectator.res", "ScoreBoard.res"]
+        self.cfgfiles=["KLUTCH.cfg", "autoexec.cfg"]
         
+    # This function opens up the KLUTCH.cfg and gets the installed skins name (this should match a dir in the skins folder)
     def getinstalledskin(self, accountname):
         targetfilelocation=os.path.join(self.cspath,"cstrike/cfg/KLUTCH.cfg")
         maincfg = open(targetfilelocation,"r")
@@ -37,9 +40,14 @@ class scgui():
             if re.search(r"// \[[^\]]*?=[^\]]*?\]", line):
                 matches = re.search(r"// \[Skin=([^\s]*?)\]", line)
                 if matches is not None:
-                    installedskin = matches.group(1)
-                    print installedskin
+                    self.installedskin = matches.group(1)
+                    print self.installedskin
     
+    # This will remove all skins from the cstrike dir
+    def uninstallskin(self):
+        
+    
+    # This removes the current installed skins and will copy the desired skin into the game folder
     def installskin(src):    
         names = os.listdir(src)
         if not os.path.exists(self.cspath): # no error if already exists
@@ -56,7 +64,7 @@ class scgui():
             except (IOError, os.error), why:
                 errors.append((srcname, dstname, str(why)))
             
-        
+    # This reads resorce files and puts key settings into variables
     def resfileinterp(self, targetfile):
         targetfilelocation=os.path.join(self.cspath,"cstrike/resource/UI",targetfile)
         resfile = open(targetfilelocation,"r")
