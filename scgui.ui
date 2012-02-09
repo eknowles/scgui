@@ -36,7 +36,7 @@
        </sizepolicy>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>3</number>
       </property>
       <widget class="QWidget" name="tab_3">
        <attribute name="title">
@@ -116,8 +116,41 @@ text-decoration:underline;</string>
           <height>65</height>
          </rect>
         </property>
+        <property name="statusTip">
+         <string>Skins preview image</string>
+        </property>
         <property name="frameShape">
          <enum>QFrame::StyledPanel</enum>
+        </property>
+        <property name="midLineWidth">
+         <number>0</number>
+        </property>
+        <property name="verticalScrollBarPolicy">
+         <enum>Qt::ScrollBarAlwaysOff</enum>
+        </property>
+        <property name="horizontalScrollBarPolicy">
+         <enum>Qt::ScrollBarAlwaysOff</enum>
+        </property>
+        <property name="backgroundBrush">
+         <brush brushstyle="NoBrush">
+          <color alpha="255">
+           <red>0</red>
+           <green>0</green>
+           <blue>0</blue>
+          </color>
+         </brush>
+        </property>
+        <property name="foregroundBrush">
+         <brush brushstyle="NoBrush">
+          <color alpha="255">
+           <red>0</red>
+           <green>0</green>
+           <blue>0</blue>
+          </color>
+         </brush>
+        </property>
+        <property name="interactive">
+         <bool>true</bool>
         </property>
        </widget>
        <widget class="QLabel" name="installed_skin">
@@ -137,7 +170,7 @@ text-decoration:underline;</string>
          </font>
         </property>
         <property name="text">
-         <string>ESPN</string>
+         <string>Base</string>
         </property>
        </widget>
        <widget class="QLabel" name="skinDescription">
@@ -251,7 +284,7 @@ text-decoration:underline;</string>
          <string>Click here to visit the authors website</string>
         </property>
         <property name="statusTip">
-         <string>Authors Website</string>
+         <string>Visit the authors website</string>
         </property>
         <property name="styleSheet">
          <string notr="true">color: rgb(85, 0, 255);
@@ -521,8 +554,9 @@ text-decoration:underline;</string>
     <property name="title">
      <string>Tools</string>
     </property>
-    <addaction name="actionCheck_for_Updates"/>
+    <addaction name="actionSet_Steam_Account_Name"/>
     <addaction name="separator"/>
+    <addaction name="actionCheck_for_Updates"/>
    </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="title">
@@ -579,6 +613,11 @@ text-decoration:underline;</string>
   <action name="actionDonate">
    <property name="text">
     <string>Donate</string>
+   </property>
+  </action>
+  <action name="actionSet_Steam_Account_Name">
+   <property name="text">
+    <string>Set Steam Account Name</string>
    </property>
   </action>
  </widget>
