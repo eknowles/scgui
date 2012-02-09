@@ -1,11 +1,13 @@
 #!/usr/bin/python
 import os, os.path
 import re
+import shutil
 
 class scgui():
     def __init__(self):
         self.steamname = "3fk"
-        self.cspath=os.path.join("C:/Program Files (x86)/Steam/steamapps",self.steamname,"counter-strike source")
+        self.skinspath = ""
+        self.cspath=os.path.join(os.environ["ProgramFiles(x86)"],"Steam/steamapps",self.steamname,"counter-strike source")
         self.specsettings ={
                               "t1name":"", 
                               "t1url":"", 
@@ -37,6 +39,23 @@ class scgui():
                 if matches is not None:
                     installedskin = matches.group(1)
                     print installedskin
+    
+    def installskin(src):    
+        names = os.listdir(src)
+        if not os.path.exists(self.cspath): # no error if already exists
+            os.makedirs(dst)
+        errors = []
+        for name in names:
+            srcname = os.path.join(src, name)
+            dstname = os.path.join(dst, name)
+            try:
+                if os.path.isdir(srcname):
+                    shutil.copytree(srcname, dstname)
+                else:
+                    shutil.copy2(srcname, dstname)
+            except (IOError, os.error), why:
+                errors.append((srcname, dstname, str(why)))
+            
         
     def resfileinterp(self, targetfile):
         targetfilelocation=os.path.join(self.cspath,"cstrike/resource/UI",targetfile)
