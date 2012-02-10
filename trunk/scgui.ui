@@ -301,23 +301,6 @@ text-decoration:underline;</string>
         </property>
        </widget>
       </widget>
-      <widget class="QWidget" name="tab_2">
-       <attribute name="title">
-        <string>Config</string>
-       </attribute>
-       <layout class="QVBoxLayout" name="verticalLayout_3">
-        <item>
-         <widget class="QTableView" name="tableView"/>
-        </item>
-        <item>
-         <widget class="QPushButton" name="BTN_updateCfg">
-          <property name="text">
-           <string>Update</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
       <widget class="QWidget" name="tab">
        <attribute name="title">
         <string>Teams</string>
@@ -509,24 +492,74 @@ text-decoration:underline;</string>
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="tab_4">
+      <widget class="QWidget" name="tab_2">
        <attribute name="title">
-        <string>Updates</string>
+        <string>Config</string>
        </attribute>
-       <layout class="QVBoxLayout" name="verticalLayout_4">
+       <layout class="QVBoxLayout" name="verticalLayout_3">
         <item>
-         <widget class="QWebView" name="webView">
-          <property name="url">
-           <url>
-            <string>http://www.scgui.com/tagged/update/mobile</string>
-           </url>
-          </property>
-          <property name="zoomFactor">
-           <double>0.600000023841858</double>
+         <widget class="QTableView" name="tableView"/>
+        </item>
+        <item>
+         <widget class="QPushButton" name="BTN_updateCfg">
+          <property name="text">
+           <string>Update</string>
           </property>
          </widget>
         </item>
        </layout>
+      </widget>
+      <widget class="QWidget" name="tab_4">
+       <attribute name="title">
+        <string>Updates</string>
+       </attribute>
+       <widget class="QWebView" name="webView">
+        <property name="geometry">
+         <rect>
+          <x>9</x>
+          <y>35</y>
+          <width>308</width>
+          <height>331</height>
+         </rect>
+        </property>
+        <property name="url">
+         <url>
+          <string>http://www.scgui.com/tagged/update/mobile</string>
+         </url>
+        </property>
+        <property name="zoomFactor">
+         <double>0.600000023841858</double>
+        </property>
+       </widget>
+       <widget class="QWebView" name="webView_2">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>10</y>
+          <width>143</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="contextMenuPolicy">
+         <enum>Qt::NoContextMenu</enum>
+        </property>
+        <property name="acceptDrops">
+         <bool>false</bool>
+        </property>
+        <property name="url">
+         <url>
+          <string>http://www.scgui.com/twitterbuttons</string>
+         </url>
+        </property>
+        <property name="zoomFactor">
+         <double>1.000000000000000</double>
+        </property>
+        <property name="renderHints">
+         <set>QPainter::SmoothPixmapTransform|QPainter::TextAntialiasing</set>
+        </property>
+       </widget>
+       <zorder>webView_2</zorder>
+       <zorder>webView</zorder>
       </widget>
      </widget>
     </item>
