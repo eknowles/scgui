@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="icons">
+    <file>icons/counterstrike-5.ico</file>
     <file>icons/Counter-Strike-Source.png</file>
     <file>icons/steam_icon.png</file>
     <file>icons/add.png</file>

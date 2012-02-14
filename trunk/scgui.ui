@@ -23,7 +23,14 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>KLUTCH's GUI Tool</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="icons.qrc">
+    <normaloff>:/icons/icons/counterstrike-5.ico</normaloff>:/icons/icons/counterstrike-5.ico</iconset>
+  </property>
+  <property name="tabShape">
+   <enum>QTabWidget::Rounded</enum>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QTabWidget" name="tabWidget">
@@ -42,13 +49,9 @@
      </sizepolicy>
     </property>
     <property name="currentIndex">
-     <number>3</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="skinsTab">
-     <attribute name="icon">
-      <iconset resource="icons.qrc">
-       <normaloff>:/icons/icons/winrar_add.png</normaloff>:/icons/icons/winrar_add.png</iconset>
-     </attribute>
      <attribute name="title">
       <string>Skins</string>
      </attribute>
@@ -168,7 +171,7 @@ text-decoration:underline;</string>
        <rect>
         <x>10</x>
         <y>40</y>
-        <width>301</width>
+        <width>221</width>
         <height>21</height>
        </rect>
       </property>
@@ -188,8 +191,8 @@ text-decoration:underline;</string>
        <rect>
         <x>10</x>
         <y>210</y>
-        <width>301</width>
-        <height>131</height>
+        <width>311</width>
+        <height>91</height>
        </rect>
       </property>
       <property name="text">
@@ -310,12 +313,34 @@ text-decoration:underline;</string>
        <bool>false</bool>
       </property>
      </widget>
+     <widget class="QPushButton" name="BTN_uninstallSkin">
+      <property name="geometry">
+       <rect>
+        <x>250</x>
+        <y>140</y>
+        <width>71</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Uninstall</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="BTN_skinsFolder">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>310</y>
+        <width>311</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Open Skins Folder</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="configTab">
-     <attribute name="icon">
-      <iconset resource="icons.qrc">
-       <normaloff>:/icons/icons/gear_in.png</normaloff>:/icons/icons/gear_in.png</iconset>
-     </attribute>
      <attribute name="title">
       <string>Config</string>
      </attribute>
@@ -333,10 +358,6 @@ text-decoration:underline;</string>
      </layout>
     </widget>
     <widget class="QWidget" name="teamsTab">
-     <attribute name="icon">
-      <iconset resource="icons.qrc">
-       <normaloff>:/icons/icons/headphone_mic.png</normaloff>:/icons/icons/headphone_mic.png</iconset>
-     </attribute>
      <attribute name="title">
       <string>Teams</string>
      </attribute>
@@ -534,10 +555,6 @@ text-decoration:underline;</string>
      </layout>
     </widget>
     <widget class="QWidget" name="updateTab">
-     <attribute name="icon">
-      <iconset resource="icons.qrc">
-       <normaloff>:/icons/icons/feed.png</normaloff>:/icons/icons/feed.png</iconset>
-     </attribute>
      <attribute name="title">
       <string>Updates</string>
      </attribute>
@@ -622,8 +639,19 @@ text-decoration:underline;</string>
      <addaction name="separator"/>
      <addaction name="actionCinema_Mode"/>
     </widget>
+    <widget class="QMenu" name="menuSkins">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="title">
+      <string>Skins</string>
+     </property>
+     <addaction name="actionUninstall_Current"/>
+     <addaction name="actionOpen_Skins_Folder"/>
+    </widget>
     <addaction name="menuLaunch_CS_Source"/>
     <addaction name="actionSet_Steam_Account_Name"/>
+    <addaction name="menuSkins"/>
     <addaction name="separator"/>
     <addaction name="actionCheck_for_Updates"/>
    </widget>
@@ -661,11 +689,6 @@ text-decoration:underline;</string>
    </property>
    <property name="text">
     <string>Save Config</string>
-   </property>
-  </action>
-  <action name="actionQuit">
-   <property name="text">
-    <string>Quit</string>
    </property>
   </action>
   <action name="actionCheck_for_Updates">
@@ -708,6 +731,9 @@ text-decoration:underline;</string>
    </property>
   </action>
   <action name="actionSet_Steam_Account_Name">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="icon">
     <iconset resource="icons.qrc">
      <normaloff>:/icons/icons/steam_icon.png</normaloff>:/icons/icons/steam_icon.png</iconset>
@@ -723,6 +749,21 @@ text-decoration:underline;</string>
    </property>
    <property name="text">
     <string>Cinema Mode</string>
+   </property>
+  </action>
+  <action name="actionQuit">
+   <property name="text">
+    <string>Quit</string>
+   </property>
+  </action>
+  <action name="actionUninstall_Current">
+   <property name="text">
+    <string>Uninstall Current</string>
+   </property>
+  </action>
+  <action name="actionOpen_Skins_Folder">
+   <property name="text">
+    <string>Open Skins Folder</string>
    </property>
   </action>
  </widget>
