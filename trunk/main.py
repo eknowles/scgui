@@ -3,7 +3,7 @@ import os, os.path
 import re
 import shutil
 import commands
-
+import distutils.dir_util
 
 class scgui():
     def __init__(self):
@@ -53,37 +53,13 @@ class scgui():
     
     # This will copy the desired skin files into the game folder and create any folders it may need
     def installskin(self, desiredskin):                  
-        desiredskindir = os.path.join(self.skinspath, desiredskin) 
-        #print desiredskindir
+        desiredskindir = os.path.join(self.skinspath, desiredskin)
+        distutils.dir_util.copy_tree(desiredskindir, self.cspath)
+    
+    # Gets a list of folders in the skins folder
+    def listskins(self):
+        os.listdir(self.skinspath)
         
-        for subdir, dirs, files in os.walk(desiredskindir):
-            print subdir 
-            for name in files:
-                filepath = os.path.join(subdir,name)
-                filepathrel = os.path.relpath(filepath, desiredskindir)
-                filepathmain = os.path.join(self.cspath, filepathrel)
-                #skinpathfull = os.path.join(self.cspath,name)
-                #print skinpathfull
-                filebasemain = os.path.dirname(filepathmain)
-#                if not os.path.exists(dirs):
-#                    os.makedirs(dirs)
-#                shutil.copy2(skinpathfull, filebasemain)
-                     
-#        if not os.path.exists(desiredskindir): # no error if already exists
-#            os.makedirs(desiredskin)
-#        errors = []
-        #for skinfile in DesiredSkinFiles:
-#            srcfile = os.path.join(desiredskindir, skinfile)
-#            dstfile = os.path.join(self.cspath, skinfile)
-            #print skinfile
-#            try:
-#                if os.path.isdir(srcfile):
-#                    shutil.copytree(srcfile, dstfile)
-#                else:
-#                    shutil.copy2(srcfile, dstfile)
-#            except (IOError, os.error), why:
-#                errors.append((srcfile, dstfile, str(why)))
-            
     # This reads resorce files and puts key settings into variables
     def resfileinterp(self, targetfile):
         targetfilelocation=os.path.join(self.cspath,"resource/UI",targetfile)
@@ -146,9 +122,10 @@ makedo=scgui()
 
 #print makedo.specsettings
 #print makedo.cfgsettings
-#makedo.getinstalledskin(makedo.steamname)
-#makedo.uninstallskin()
-makedo.installskin('Base')
+makedo.getinstalledskin(makedo.steamname)
+makedo.uninstallskin()
+#makedo.installskin('Base')
+#makedo.listskins()
 #makedo.editcfg(makedo.cfgfiles[1])
 #makedo.editres(makedo.resfiles[0])
 #makedo.launchcs()
