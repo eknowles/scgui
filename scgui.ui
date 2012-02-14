@@ -26,544 +26,568 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QVBoxLayout" name="verticalLayout">
-    <item>
-     <widget class="QTabWidget" name="tabWidget">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
+   <widget class="QTabWidget" name="tabWidget">
+    <property name="geometry">
+     <rect>
+      <x>9</x>
+      <y>9</y>
+      <width>332</width>
+      <height>371</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="currentIndex">
+     <number>3</number>
+    </property>
+    <widget class="QWidget" name="skinsTab">
+     <attribute name="icon">
+      <iconset resource="icons.qrc">
+       <normaloff>:/icons/icons/winrar_add.png</normaloff>:/icons/icons/winrar_add.png</iconset>
+     </attribute>
+     <attribute name="title">
+      <string>Skins</string>
+     </attribute>
+     <widget class="QPushButton" name="BTN_installSkin">
+      <property name="geometry">
+       <rect>
+        <x>240</x>
+        <y>10</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
       </property>
-      <property name="currentIndex">
-       <number>3</number>
+      <property name="text">
+       <string>Install</string>
       </property>
-      <widget class="QWidget" name="tab_3">
-       <attribute name="title">
-        <string>Skins</string>
-       </attribute>
-       <widget class="QPushButton" name="BTN_installSkin">
-        <property name="geometry">
-         <rect>
-          <x>240</x>
-          <y>10</y>
-          <width>75</width>
-          <height>23</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Install</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="skinLinkLabel">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>350</y>
-          <width>131</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="cursor">
-         <cursorShape>PointingHandCursor</cursorShape>
-        </property>
-        <property name="toolTip">
-         <string/>
-        </property>
-        <property name="statusTip">
-         <string>Visit the skins section of the website</string>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">color: rgb(85, 0, 255);
-text-decoration:underline;</string>
-        </property>
-        <property name="text">
-         <string>Download more skins online</string>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="BTN_skinFolder">
-        <property name="geometry">
-         <rect>
-          <x>230</x>
-          <y>350</y>
-          <width>94</width>
-          <height>23</height>
-         </rect>
-        </property>
-        <property name="toolTip">
-         <string>Open the skins folder in Explorer</string>
-        </property>
-        <property name="text">
-         <string>Open Skins Folder</string>
-        </property>
-       </widget>
-       <widget class="QComboBox" name="comboBox_skins">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>10</y>
-          <width>221</width>
-          <height>20</height>
-         </rect>
-        </property>
-       </widget>
-       <widget class="QGraphicsView" name="graphicsView">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>70</y>
-          <width>310</width>
-          <height>65</height>
-         </rect>
-        </property>
-        <property name="statusTip">
-         <string>Skins preview image</string>
-        </property>
-        <property name="frameShape">
-         <enum>QFrame::StyledPanel</enum>
-        </property>
-        <property name="midLineWidth">
-         <number>0</number>
-        </property>
-        <property name="verticalScrollBarPolicy">
-         <enum>Qt::ScrollBarAlwaysOff</enum>
-        </property>
-        <property name="horizontalScrollBarPolicy">
-         <enum>Qt::ScrollBarAlwaysOff</enum>
-        </property>
-        <property name="backgroundBrush">
-         <brush brushstyle="NoBrush">
-          <color alpha="255">
-           <red>0</red>
-           <green>0</green>
-           <blue>0</blue>
-          </color>
-         </brush>
-        </property>
-        <property name="foregroundBrush">
-         <brush brushstyle="NoBrush">
-          <color alpha="255">
-           <red>0</red>
-           <green>0</green>
-           <blue>0</blue>
-          </color>
-         </brush>
-        </property>
-        <property name="interactive">
-         <bool>true</bool>
-        </property>
-       </widget>
-       <widget class="QLabel" name="installed_skin">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>40</y>
-          <width>301</width>
-          <height>21</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>11</pointsize>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="text">
-         <string>Base</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="skinDescription">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>210</y>
-          <width>301</width>
-          <height>131</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</string>
-        </property>
-        <property name="textFormat">
-         <enum>Qt::PlainText</enum>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-        </property>
-        <property name="wordWrap">
-         <bool>true</bool>
-        </property>
-       </widget>
-       <widget class="QLabel" name="skinCreatorLabel">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>140</y>
-          <width>61</width>
-          <height>21</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Creator</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="skinCreator">
-        <property name="geometry">
-         <rect>
-          <x>70</x>
-          <y>140</y>
-          <width>251</width>
-          <height>21</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Edward Knowles</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="skinVersion">
-        <property name="geometry">
-         <rect>
-          <x>70</x>
-          <y>160</y>
-          <width>251</width>
-          <height>21</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>1.0.0</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="skinVersionLabel">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>160</y>
-          <width>61</width>
-          <height>21</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Version</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="skinWebsiteLabel">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>180</y>
-          <width>61</width>
-          <height>21</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Website</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="skinWebsite">
-        <property name="geometry">
-         <rect>
-          <x>70</x>
-          <y>180</y>
-          <width>251</width>
-          <height>21</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <underline>true</underline>
-         </font>
-        </property>
-        <property name="cursor">
-         <cursorShape>PointingHandCursor</cursorShape>
-        </property>
-        <property name="focusPolicy">
-         <enum>Qt::NoFocus</enum>
-        </property>
-        <property name="toolTip">
-         <string>Click here to visit the authors website</string>
-        </property>
-        <property name="statusTip">
-         <string>Visit the authors website</string>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">color: rgb(85, 0, 255);
-text-decoration:underline;</string>
-        </property>
-        <property name="text">
-         <string>http://www.example.com</string>
-        </property>
-        <property name="scaledContents">
-         <bool>false</bool>
-        </property>
-        <property name="openExternalLinks">
-         <bool>false</bool>
-        </property>
-       </widget>
-      </widget>
-      <widget class="QWidget" name="tab">
-       <attribute name="title">
-        <string>Teams</string>
-       </attribute>
-       <layout class="QVBoxLayout" name="verticalLayout_2">
-        <item>
-         <widget class="QGroupBox" name="groupBox_t1">
-          <property name="title">
-           <string>Home Team</string>
-          </property>
-          <widget class="QLineEdit" name="Box_t1name">
-           <property name="geometry">
-            <rect>
-             <x>82</x>
-             <y>20</y>
-             <width>211</width>
-             <height>20</height>
-            </rect>
-           </property>
-           <property name="toolTip">
-            <string/>
-           </property>
-           <property name="statusTip">
-            <string>Enter the Counter-Terrorist team name</string>
-           </property>
-           <property name="whatsThis">
-            <string/>
-           </property>
-          </widget>
-          <widget class="QLabel" name="t1nameLabel">
-           <property name="geometry">
-            <rect>
-             <x>10</x>
-             <y>20</y>
-             <width>61</width>
-             <height>21</height>
-            </rect>
-           </property>
-           <property name="text">
-            <string>Name</string>
-           </property>
-          </widget>
-          <widget class="QLineEdit" name="Box_t1url">
-           <property name="geometry">
-            <rect>
-             <x>82</x>
-             <y>50</y>
-             <width>211</width>
-             <height>20</height>
-            </rect>
-           </property>
-           <property name="statusTip">
-            <string>Enter the text you want under the team name</string>
-           </property>
-          </widget>
-          <widget class="QLabel" name="t1urlLabel">
-           <property name="geometry">
-            <rect>
-             <x>10</x>
-             <y>50</y>
-             <width>61</width>
-             <height>21</height>
-            </rect>
-           </property>
-           <property name="text">
-            <string>Website</string>
-           </property>
-          </widget>
-          <widget class="QComboBox" name="comboBox_t1flag">
-           <property name="geometry">
-            <rect>
-             <x>80</x>
-             <y>80</y>
-             <width>211</width>
-             <height>22</height>
-            </rect>
-           </property>
-          </widget>
-          <widget class="QLabel" name="t1flagLabel">
-           <property name="geometry">
-            <rect>
-             <x>10</x>
-             <y>80</y>
-             <width>61</width>
-             <height>21</height>
-            </rect>
-           </property>
-           <property name="text">
-            <string>Flag/Logo</string>
-           </property>
-          </widget>
-         </widget>
-        </item>
-        <item>
-         <widget class="QGroupBox" name="groupBox_t2">
-          <property name="title">
-           <string>Away Team</string>
-          </property>
-          <widget class="QLineEdit" name="Box_t2name">
-           <property name="geometry">
-            <rect>
-             <x>82</x>
-             <y>20</y>
-             <width>211</width>
-             <height>20</height>
-            </rect>
-           </property>
-           <property name="statusTip">
-            <string>Enter the Terrorist team name</string>
-           </property>
-          </widget>
-          <widget class="QLabel" name="t2nameLabel">
-           <property name="geometry">
-            <rect>
-             <x>10</x>
-             <y>20</y>
-             <width>61</width>
-             <height>21</height>
-            </rect>
-           </property>
-           <property name="text">
-            <string>Name</string>
-           </property>
-          </widget>
-          <widget class="QLineEdit" name="Box_t2url">
-           <property name="geometry">
-            <rect>
-             <x>82</x>
-             <y>50</y>
-             <width>211</width>
-             <height>20</height>
-            </rect>
-           </property>
-           <property name="statusTip">
-            <string>Enter the text you want under the team name</string>
-           </property>
-          </widget>
-          <widget class="QLabel" name="t2urlLabel">
-           <property name="geometry">
-            <rect>
-             <x>10</x>
-             <y>50</y>
-             <width>61</width>
-             <height>21</height>
-            </rect>
-           </property>
-           <property name="text">
-            <string>Website</string>
-           </property>
-          </widget>
-          <widget class="QComboBox" name="comboBox_t2flag">
-           <property name="geometry">
-            <rect>
-             <x>80</x>
-             <y>80</y>
-             <width>211</width>
-             <height>22</height>
-            </rect>
-           </property>
-          </widget>
-          <widget class="QLabel" name="t2flagLabel">
-           <property name="geometry">
-            <rect>
-             <x>10</x>
-             <y>80</y>
-             <width>61</width>
-             <height>21</height>
-            </rect>
-           </property>
-           <property name="text">
-            <string>Flag/Logo</string>
-           </property>
-          </widget>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="BTN_swapSides">
-          <property name="text">
-           <string>Swap Teams / Half Time</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="BTN_updateTeams">
-          <property name="text">
-           <string>Apply</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-      <widget class="QWidget" name="tab_2">
-       <attribute name="title">
-        <string>Config</string>
-       </attribute>
-       <layout class="QVBoxLayout" name="verticalLayout_3">
-        <item>
-         <widget class="QTableView" name="tableView"/>
-        </item>
-        <item>
-         <widget class="QPushButton" name="BTN_updateCfg">
-          <property name="text">
-           <string>Update</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-      <widget class="QWidget" name="tab_4">
-       <attribute name="title">
-        <string>Updates</string>
-       </attribute>
-       <widget class="QWebView" name="webView">
-        <property name="geometry">
-         <rect>
-          <x>9</x>
-          <y>35</y>
-          <width>308</width>
-          <height>331</height>
-         </rect>
-        </property>
-        <property name="url">
-         <url>
-          <string>http://www.scgui.com/tagged/update/mobile</string>
-         </url>
-        </property>
-        <property name="zoomFactor">
-         <double>0.600000023841858</double>
-        </property>
-       </widget>
-       <widget class="QWebView" name="webView_2">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>10</y>
-          <width>143</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="contextMenuPolicy">
-         <enum>Qt::NoContextMenu</enum>
-        </property>
-        <property name="acceptDrops">
-         <bool>false</bool>
-        </property>
-        <property name="url">
-         <url>
-          <string>http://www.scgui.com/twitterbuttons</string>
-         </url>
-        </property>
-        <property name="zoomFactor">
-         <double>1.000000000000000</double>
-        </property>
-        <property name="renderHints">
-         <set>QPainter::SmoothPixmapTransform|QPainter::TextAntialiasing</set>
-        </property>
-       </widget>
-       <zorder>webView_2</zorder>
-       <zorder>webView</zorder>
-      </widget>
      </widget>
-    </item>
-   </layout>
+     <widget class="QLabel" name="skinLinkLabel">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>350</y>
+        <width>131</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="toolTip">
+       <string/>
+      </property>
+      <property name="statusTip">
+       <string>Visit the skins section of the website</string>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(85, 0, 255);
+text-decoration:underline;</string>
+      </property>
+      <property name="text">
+       <string>Download more skins online</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="BTN_skinFolder">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>350</y>
+        <width>94</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="toolTip">
+       <string>Open the skins folder in Explorer</string>
+      </property>
+      <property name="text">
+       <string>Open Skins Folder</string>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="comboBox_skins">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>221</width>
+        <height>20</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QGraphicsView" name="graphicsView">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>70</y>
+        <width>310</width>
+        <height>65</height>
+       </rect>
+      </property>
+      <property name="statusTip">
+       <string>Skins preview image</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="midLineWidth">
+       <number>0</number>
+      </property>
+      <property name="verticalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOff</enum>
+      </property>
+      <property name="horizontalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOff</enum>
+      </property>
+      <property name="backgroundBrush">
+       <brush brushstyle="NoBrush">
+        <color alpha="255">
+         <red>0</red>
+         <green>0</green>
+         <blue>0</blue>
+        </color>
+       </brush>
+      </property>
+      <property name="foregroundBrush">
+       <brush brushstyle="NoBrush">
+        <color alpha="255">
+         <red>0</red>
+         <green>0</green>
+         <blue>0</blue>
+        </color>
+       </brush>
+      </property>
+      <property name="interactive">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="installed_skin">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>40</y>
+        <width>301</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>11</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Base</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="skinDescription">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>210</y>
+        <width>301</width>
+        <height>131</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</string>
+      </property>
+      <property name="textFormat">
+       <enum>Qt::PlainText</enum>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+      </property>
+      <property name="wordWrap">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="skinCreatorLabel">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>140</y>
+        <width>61</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Creator</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="skinCreator">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>140</y>
+        <width>251</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Edward Knowles</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="skinVersion">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>160</y>
+        <width>251</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>1.0.0</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="skinVersionLabel">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>160</y>
+        <width>61</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Version</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="skinWebsiteLabel">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>180</y>
+        <width>61</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Website</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="skinWebsite">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>180</y>
+        <width>251</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <underline>true</underline>
+       </font>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::NoFocus</enum>
+      </property>
+      <property name="toolTip">
+       <string>Click here to visit the authors website</string>
+      </property>
+      <property name="statusTip">
+       <string>Visit the authors website</string>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(85, 0, 255);
+text-decoration:underline;</string>
+      </property>
+      <property name="text">
+       <string>http://www.example.com</string>
+      </property>
+      <property name="scaledContents">
+       <bool>false</bool>
+      </property>
+      <property name="openExternalLinks">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="configTab">
+     <attribute name="icon">
+      <iconset resource="icons.qrc">
+       <normaloff>:/icons/icons/gear_in.png</normaloff>:/icons/icons/gear_in.png</iconset>
+     </attribute>
+     <attribute name="title">
+      <string>Config</string>
+     </attribute>
+     <layout class="QVBoxLayout" name="verticalLayout_3">
+      <item>
+       <widget class="QTableView" name="configTable"/>
+      </item>
+      <item>
+       <widget class="QPushButton" name="BTN_updateCfg">
+        <property name="text">
+         <string>Update</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="teamsTab">
+     <attribute name="icon">
+      <iconset resource="icons.qrc">
+       <normaloff>:/icons/icons/headphone_mic.png</normaloff>:/icons/icons/headphone_mic.png</iconset>
+     </attribute>
+     <attribute name="title">
+      <string>Teams</string>
+     </attribute>
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <item>
+       <widget class="QGroupBox" name="groupBox_t1">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
+        <property name="title">
+         <string>Home Team</string>
+        </property>
+        <widget class="QLineEdit" name="Box_t1name">
+         <property name="geometry">
+          <rect>
+           <x>82</x>
+           <y>20</y>
+           <width>211</width>
+           <height>20</height>
+          </rect>
+         </property>
+         <property name="toolTip">
+          <string/>
+         </property>
+         <property name="statusTip">
+          <string>Enter the Counter-Terrorist team name</string>
+         </property>
+         <property name="whatsThis">
+          <string/>
+         </property>
+        </widget>
+        <widget class="QLabel" name="t1nameLabel">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>20</y>
+           <width>61</width>
+           <height>21</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Name</string>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="Box_t1url">
+         <property name="geometry">
+          <rect>
+           <x>82</x>
+           <y>50</y>
+           <width>211</width>
+           <height>20</height>
+          </rect>
+         </property>
+         <property name="statusTip">
+          <string>Enter the text you want under the team name</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="t1urlLabel">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>50</y>
+           <width>61</width>
+           <height>21</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Website</string>
+         </property>
+        </widget>
+        <widget class="QComboBox" name="comboBox_t1flag">
+         <property name="geometry">
+          <rect>
+           <x>80</x>
+           <y>80</y>
+           <width>211</width>
+           <height>22</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QLabel" name="t1flagLabel">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>80</y>
+           <width>61</width>
+           <height>21</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Flag/Logo</string>
+         </property>
+        </widget>
+       </widget>
+      </item>
+      <item>
+       <widget class="QGroupBox" name="groupBox_t2">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
+        <property name="title">
+         <string>Away Team</string>
+        </property>
+        <widget class="QLineEdit" name="Box_t2name">
+         <property name="geometry">
+          <rect>
+           <x>82</x>
+           <y>20</y>
+           <width>211</width>
+           <height>20</height>
+          </rect>
+         </property>
+         <property name="statusTip">
+          <string>Enter the Terrorist team name</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="t2nameLabel">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>20</y>
+           <width>61</width>
+           <height>21</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Name</string>
+         </property>
+        </widget>
+        <widget class="QLineEdit" name="Box_t2url">
+         <property name="geometry">
+          <rect>
+           <x>82</x>
+           <y>50</y>
+           <width>211</width>
+           <height>20</height>
+          </rect>
+         </property>
+         <property name="statusTip">
+          <string>Enter the text you want under the team name</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="t2urlLabel">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>50</y>
+           <width>61</width>
+           <height>21</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Website</string>
+         </property>
+        </widget>
+        <widget class="QComboBox" name="comboBox_t2flag">
+         <property name="geometry">
+          <rect>
+           <x>80</x>
+           <y>80</y>
+           <width>211</width>
+           <height>22</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QLabel" name="t2flagLabel">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>80</y>
+           <width>61</width>
+           <height>21</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Flag/Logo</string>
+         </property>
+        </widget>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="BTN_swapSides">
+        <property name="text">
+         <string>Swap Teams / Half Time</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="BTN_updateTeams">
+        <property name="text">
+         <string>Apply</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="updateTab">
+     <attribute name="icon">
+      <iconset resource="icons.qrc">
+       <normaloff>:/icons/icons/feed.png</normaloff>:/icons/icons/feed.png</iconset>
+     </attribute>
+     <attribute name="title">
+      <string>Updates</string>
+     </attribute>
+     <widget class="QWebView" name="devWeb">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>311</width>
+        <height>331</height>
+       </rect>
+      </property>
+      <property name="url">
+       <url>
+        <string>http://www.scgui.com/tagged/update/mobile</string>
+       </url>
+      </property>
+      <property name="zoomFactor">
+       <double>0.600000023841858</double>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+   <widget class="QWebView" name="creditWeb">
+    <property name="geometry">
+     <rect>
+      <x>9</x>
+      <y>390</y>
+      <width>332</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="contextMenuPolicy">
+     <enum>Qt::NoContextMenu</enum>
+    </property>
+    <property name="acceptDrops">
+     <bool>false</bool>
+    </property>
+    <property name="url">
+     <url>
+      <string>http://www.scgui.com/twitterbuttons</string>
+     </url>
+    </property>
+    <property name="zoomFactor">
+     <double>1.000000000000000</double>
+    </property>
+    <property name="renderHints">
+     <set>QPainter::SmoothPixmapTransform|QPainter::TextAntialiasing</set>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -587,6 +611,18 @@ text-decoration:underline;</string>
     <property name="title">
      <string>Tools</string>
     </property>
+    <widget class="QMenu" name="menuLaunch_CS_Source">
+     <property name="title">
+      <string>Launch CS:Source</string>
+     </property>
+     <property name="icon">
+      <iconset resource="icons.qrc">
+       <normaloff>:/icons/icons/Counter-Strike-Source.png</normaloff>:/icons/icons/Counter-Strike-Source.png</iconset>
+     </property>
+     <addaction name="separator"/>
+     <addaction name="actionCinema_Mode"/>
+    </widget>
+    <addaction name="menuLaunch_CS_Source"/>
     <addaction name="actionSet_Steam_Account_Name"/>
     <addaction name="separator"/>
     <addaction name="actionCheck_for_Updates"/>
@@ -604,16 +640,25 @@ text-decoration:underline;</string>
    <addaction name="menuHelp"/>
   </widget>
   <widget class="QStatusBar" name="statusbar">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
    <property name="autoFillBackground">
     <bool>false</bool>
    </property>
   </widget>
   <action name="actionLoad_Config">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>Load Config</string>
    </property>
   </action>
   <action name="actionSave_Config">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>Save Config</string>
    </property>
@@ -624,6 +669,9 @@ text-decoration:underline;</string>
    </property>
   </action>
   <action name="actionCheck_for_Updates">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>Check for Updates</string>
    </property>
@@ -639,18 +687,42 @@ text-decoration:underline;</string>
    </property>
   </action>
   <action name="actionDevelopers_Blog">
+   <property name="icon">
+    <iconset resource="icons.qrc">
+     <normaloff>:/icons/icons/tumblr.png</normaloff>:/icons/icons/tumblr.png</iconset>
+   </property>
    <property name="text">
     <string>Developers Blog</string>
    </property>
   </action>
   <action name="actionDonate">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="icons.qrc">
+     <normaloff>:/icons/icons/award_star_gold_3.png</normaloff>:/icons/icons/award_star_gold_3.png</iconset>
+   </property>
    <property name="text">
     <string>Donate</string>
    </property>
   </action>
   <action name="actionSet_Steam_Account_Name">
+   <property name="icon">
+    <iconset resource="icons.qrc">
+     <normaloff>:/icons/icons/steam_icon.png</normaloff>:/icons/icons/steam_icon.png</iconset>
+   </property>
    <property name="text">
     <string>Set Steam Account Name</string>
+   </property>
+  </action>
+  <action name="actionCinema_Mode">
+   <property name="icon">
+    <iconset resource="icons.qrc">
+     <normaloff>:/icons/icons/hd_720.png</normaloff>:/icons/icons/hd_720.png</iconset>
+   </property>
+   <property name="text">
+    <string>Cinema Mode</string>
    </property>
   </action>
  </widget>
@@ -661,6 +733,8 @@ text-decoration:underline;</string>
    <header>QtWebKit/QWebView</header>
   </customwidget>
  </customwidgets>
- <resources/>
+ <resources>
+  <include location="icons.qrc"/>
+ </resources>
  <connections/>
 </ui>
