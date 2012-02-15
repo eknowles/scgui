@@ -23,7 +23,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>KLUTCH's GUI Tool</string>
+   <string>SCGUI Beta</string>
   </property>
   <property name="windowIcon">
    <iconset resource="icons.qrc">
@@ -39,7 +39,7 @@
       <x>9</x>
       <y>9</y>
       <width>332</width>
-      <height>371</height>
+      <height>401</height>
      </rect>
     </property>
     <property name="sizePolicy">
@@ -120,7 +120,7 @@ text-decoration:underline;</string>
        </rect>
       </property>
      </widget>
-     <widget class="QGraphicsView" name="graphicsView">
+     <widget class="QGraphicsView" name="skinPreviewImage">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -324,19 +324,6 @@ text-decoration:underline;</string>
       </property>
       <property name="text">
        <string>Uninstall</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="BTN_skinsFolder">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>310</y>
-        <width>311</width>
-        <height>23</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Open Skins Folder</string>
       </property>
      </widget>
     </widget>
@@ -578,33 +565,6 @@ text-decoration:underline;</string>
      </widget>
     </widget>
    </widget>
-   <widget class="QWebView" name="creditWeb">
-    <property name="geometry">
-     <rect>
-      <x>9</x>
-      <y>390</y>
-      <width>332</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="contextMenuPolicy">
-     <enum>Qt::NoContextMenu</enum>
-    </property>
-    <property name="acceptDrops">
-     <bool>false</bool>
-    </property>
-    <property name="url">
-     <url>
-      <string>http://www.scgui.com/twitterbuttons</string>
-     </url>
-    </property>
-    <property name="zoomFactor">
-     <double>1.000000000000000</double>
-    </property>
-    <property name="renderHints">
-     <set>QPainter::SmoothPixmapTransform|QPainter::TextAntialiasing</set>
-    </property>
-   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -626,7 +586,7 @@ text-decoration:underline;</string>
    </widget>
    <widget class="QMenu" name="menuTools">
     <property name="title">
-     <string>Tools</string>
+     <string>Edit</string>
     </property>
     <widget class="QMenu" name="menuLaunch_CS_Source">
      <property name="title">

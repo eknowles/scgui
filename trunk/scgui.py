@@ -8,18 +8,35 @@ import distutils.dir_util
 class klutchguitool():
     def __init__(self):
         self.steamname = "3fk"
-        self.skinspath = os.path.join(os.environ["ProgramFiles(x86)"],"SCGUI\Skins")
+        #self.skinspath = os.path.join(os.environ["ProgramFiles(x86)"],"SCGUI\Skins")
+        
+        # Use skins from dev
+        self.skinspath = "C:\Users\Edward\workspace\SCGUI\Skins"
+        
         self.installedskin = {"Skin":"","Version":"","Author":"","Website":"","Info":""}
+        self.skindetails = {"Skin":"","Version":"","Author":"","Website":"","Info":""}
         self.cspath=os.path.join(os.environ["ProgramFiles(x86)"],"Steam/steamapps",self.steamname,"counter-strike source/cstrike")
         self.specsettings ={"t1name":"","t1url":"","t1flag":"","t2name":"","t2url":"","t2flag":""}
         self.cfgsettings ={"spec_player":"","hud_saytext_time":"","hud_deathnotice_time":"","spec_autodirector":"","spec_scoreboard":"","spec_mode":"","net_graph":"","cl_dynamiccrosshair":"","func_break_max_pieces":"","overview_names":""}
         self.resfiles=["Spectator.res", "ScoreBoard.res"]
         self.cfgfiles=["KLUTCH.cfg", "autoexec.cfg"]
+        self.localskins=[]
         self.noskininstalled = "SCGUI cannot find any skins installed in your game folder. Try installing one by choosing one from the dropdown list. If this problem persists try reinstalling the program."
         
     # This function opens up the KLUTCH.cfg and gets the installed skins name (this should match a dir in the skins folder)
-    def getinstalledskin(self, accountname):
+    def getskindetails(self, skin):
         
+        targetfilelocation=os.path.join(self.skinspath,skin,"cfg/KLUTCH.cfg")
+        if os.path.exists(targetfilelocation):
+            maincfg = open(targetfilelocation,"r")
+            for line in maincfg.readlines():
+                if re.search(r"// \[[^\]]*?=[^\]]*?\]", line):
+                    matches = re.search(r"// \[([^\s]*?)=(.*?)\]", line)
+                    if matches is not None:
+                        self.skindetails[matches.group(1)] = matches.group(2)
+                        
+    
+    def getinstalledskin(self, accountname):
         targetfilelocation=os.path.join(self.cspath,"cfg/KLUTCH.cfg")
         if os.path.exists(targetfilelocation):
             maincfg = open(targetfilelocation,"r")
@@ -30,9 +47,6 @@ class klutchguitool():
                         self.installedskin[matches.group(1)] = matches.group(2)
         else:
             print self.noskininstalled
-        print self.installedskin["Author"]
-        
-        
     
     # This will remove all skins from the cstrike dir
     def uninstallskin(self):
@@ -59,7 +73,8 @@ class klutchguitool():
     
     # Gets a list of folders in the skins folder
     def listskins(self):
-        os.listdir(self.skinspath)
+        print "lol"#os.listdir(self.skinspath)
+        
         
     # This reads resorce files and puts key settings into variables
     def resfileinterp(self, targetfile):
@@ -112,9 +127,7 @@ class klutchguitool():
     def launchcs(self):
         os.execv("C:\Program Files (x86)\Steam\Steam.exe", ['-applaunch 240','-novid','-sw','-w 1280','-h 720','-x 0','-y 0','-noborder','+fps_max 240'])
 
-scgui=klutchguitool()
 
-scgui.getinstalledskin(scgui.steamname)
 #makedo.readfiles()
 #makedo.specsettings["t1name"]="Team VeryGames"
 #makedo.specsettings["t1url"]="www.team-verygames.com"
