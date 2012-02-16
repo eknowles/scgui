@@ -9,12 +9,12 @@ import subprocess
 class klutchguitool():
     def __init__(self):
         self.steamname = "3fk"
-        #self.skinspath = os.path.join(os.environ["ProgramFiles(x86)"],"SCGUI\Skins")
+        self.skinspath = os.path.join(os.environ["ProgramFiles(x86)"],"SCGUI\Skins")
         
         # Use skins from dev
-        self.skinspath = "C:\Users\Stunjelly3\workspace\scgui\Skins"
+        #self.skinspath = "C:\Users\Stunjelly3\workspace\scgui\Skins"
         
-        self.installedskin = {"Skin":"","Version":"","Author":"","Website":"","Info":""}
+        self.installedskin = {"Skin":"No Skin Installed","Version":"No Skin Installed","Author":"No Skin Installed","Website":"No Skin Installed","Info":"No Skin Installed"}
         self.skindetails = {"Skin":"","Version":"","Author":"","Website":"","Info":""}
         self.cspath=os.path.join(os.environ["ProgramFiles(x86)"],"Steam/steamapps",self.steamname,"counter-strike source/cstrike")
         self.specsettings ={"t1name":"","t1url":"","t1flag":"","t2name":"","t2url":"","t2flag":""}
@@ -38,8 +38,9 @@ class klutchguitool():
                         
     
     def getinstalledskin(self, accountname):
-        targetfilelocation=os.path.join(self.cspath,"cfg/KLUTCH.cfg")
-        if os.path.exists(targetfilelocation):
+        targetfilelocation=os.path.normpath(os.path.join(self.cspath,"cfg/KLUTCH.cfg"))
+        print targetfilelocation
+        if os.path.isfile(targetfilelocation):
             maincfg = open(targetfilelocation,"r")
             for line in maincfg.readlines():
                 if re.search(r"// \[[^\]]*?=[^\]]*?\]", line):
@@ -47,10 +48,10 @@ class klutchguitool():
                     if matches is not None:
                         self.installedskin[matches.group(1)] = matches.group(2)
         else:
-            print self.noskininstalled
+            print "no skin installed" #self.noskininstalled
     
     # This will remove all skins from the cstrike dir
-    def uninstallskin(self):
+    def uninstallskin(self, status):
         currentskindir = os.path.join(self.skinspath,self.installedskin["Skin"])
         
         for subdir, dirs, files in os.walk(currentskindir):
@@ -60,15 +61,15 @@ class klutchguitool():
                 filepathmain = os.path.join(self.cspath, filepathrel)
                 if os.path.exists(filepathmain):
                     os.remove(filepathmain)
-                    print "File "+filepath+" deleted."
+                    print "Removing file "+name+"..."
                 filebasemain = os.path.dirname(filepathmain)    
                 if os.path.exists(filebasemain) and os.listdir(filebasemain) == []:
                     os.rmdir(filebasemain)
-                    print "Folder "+filepath+" deleted." 
+                    print "Removing folder "+subdir+"..."
 #        print self.installedskin["Author"]
     
     # This will copy the desired skin files into the game folder and create any folders it may need
-    def installskin(self, desiredskin):                  
+    def installskin(self, desiredskin):  
         desiredskindir = os.path.join(self.skinspath, desiredskin)
         distutils.dir_util.copy_tree(desiredskindir, self.cspath)
     
