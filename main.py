@@ -3,6 +3,12 @@ import os, os.path
 import sys
 import webbrowser
 
+"""
+SCGUI.com
+Shout Casters Graphical User Interface
+Also known as KLUTCH's GUI Tool.
+"""
+
 # Import Qt modules
 from PyQt4 import QtCore,QtGui
 
@@ -32,15 +38,20 @@ class Main(QtGui.QMainWindow):
         self.ui.skinWebsite.setText(self.kgui.installedskin["Website"])
         self.ui.skinDescription.setText(self.kgui.installedskin["Info"])
         
+        
+       
+        # !!! TODO: for each name in skins folder > if exists name/cfg/klutch.cfg > addItems to combo, else ignore !!!
+        
         # This gets the available skins into the combobox
         self.ui.comboBox_skins.addItems(os.listdir(self.kgui.skinspath))
-        
         # Set the preview image as the installed skin
         self.ui.SkinPreviewImage.setPixmap(QtGui.QPixmap(os.path.join(self.kgui.skinspath, self.kgui.installedskin["Skin"], "preview.jpg")))
-
-        
+        # Connects the combo box to the update skins chosen def
         self.connect(self.ui.comboBox_skins, QtCore.SIGNAL('activated(QString)'), self.skinchosen)
-        self.connect(self.ui.skinWebsite, QtCore.SIGNAL('activated(QString)'), self.skinchosen)
+        self.ui.BTN_skinFolder.clicked.connect(self.kgui.openskinsfolder)
+        
+        # for testing
+        # self.kgui.installskin('Base')
     
     def skinchosen(self, text):
         # makes an instance of scgui as kgui so use kgui to get the functions from scgui

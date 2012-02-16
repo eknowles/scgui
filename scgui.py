@@ -4,6 +4,7 @@ import re
 import shutil
 import commands
 import distutils.dir_util
+import subprocess
 
 class klutchguitool():
     def __init__(self):
@@ -11,7 +12,7 @@ class klutchguitool():
         #self.skinspath = os.path.join(os.environ["ProgramFiles(x86)"],"SCGUI\Skins")
         
         # Use skins from dev
-        self.skinspath = "C:\Users\Edward\workspace\SCGUI\Skins"
+        self.skinspath = "C:\Users\Stunjelly3\workspace\scgui\Skins"
         
         self.installedskin = {"Skin":"","Version":"","Author":"","Website":"","Info":""}
         self.skindetails = {"Skin":"","Version":"","Author":"","Website":"","Info":""}
@@ -127,6 +128,8 @@ class klutchguitool():
     def launchcs(self):
         os.execv("C:\Program Files (x86)\Steam\Steam.exe", ['-applaunch 240','-novid','-sw','-w 1280','-h 720','-x 0','-y 0','-noborder','+fps_max 240'])
 
+    def openskinsfolder(self):
+        subprocess.Popen('explorer ' + self.skinspath)
 
 #makedo.readfiles()
 #makedo.specsettings["t1name"]="Team VeryGames"
