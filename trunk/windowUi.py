@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'scgui.ui'
 #
-# Created: Thu Feb 16 15:04:12 2012
+# Created: Thu Feb 16 16:55:41 2012
 #      by: PyQt4 UI code generator 4.9.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -36,21 +36,14 @@ class Ui_MainWindow(object):
         self.tabWidget.setObjectName(_fromUtf8("tabWidget"))
         self.skinsTab = QtGui.QWidget()
         self.skinsTab.setObjectName(_fromUtf8("skinsTab"))
-        self.BTN_installSkin = QtGui.QPushButton(self.skinsTab)
-        self.BTN_installSkin.setEnabled(True)
-        self.BTN_installSkin.setGeometry(QtCore.QRect(260, 169, 61, 23))
-        self.BTN_installSkin.setAutoFillBackground(False)
-        self.BTN_installSkin.setCheckable(False)
-        self.BTN_installSkin.setObjectName(_fromUtf8("BTN_installSkin"))
-        self.skinLinkLabel = QtGui.QLabel(self.skinsTab)
-        self.skinLinkLabel.setGeometry(QtCore.QRect(10, 350, 131, 21))
-        self.skinLinkLabel.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.skinLinkLabel.setToolTip(_fromUtf8(""))
-        self.skinLinkLabel.setStyleSheet(_fromUtf8("color: rgb(85, 0, 255);\n"
-"text-decoration:underline;"))
-        self.skinLinkLabel.setObjectName(_fromUtf8("skinLinkLabel"))
+        self.BTN_uninstallSkin = QtGui.QPushButton(self.skinsTab)
+        self.BTN_uninstallSkin.setEnabled(True)
+        self.BTN_uninstallSkin.setGeometry(QtCore.QRect(260, 350, 61, 23))
+        self.BTN_uninstallSkin.setAutoFillBackground(False)
+        self.BTN_uninstallSkin.setCheckable(False)
+        self.BTN_uninstallSkin.setObjectName(_fromUtf8("BTN_uninstallSkin"))
         self.BTN_skinFolder = QtGui.QPushButton(self.skinsTab)
-        self.BTN_skinFolder.setGeometry(QtCore.QRect(200, 349, 121, 23))
+        self.BTN_skinFolder.setGeometry(QtCore.QRect(10, 350, 101, 23))
         self.BTN_skinFolder.setObjectName(_fromUtf8("BTN_skinFolder"))
         self.comboBox_skins = QtGui.QComboBox(self.skinsTab)
         self.comboBox_skins.setGeometry(QtCore.QRect(220, 10, 101, 22))
@@ -78,10 +71,10 @@ class Ui_MainWindow(object):
         self.skinAuthorLabel.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
         self.skinAuthorLabel.setObjectName(_fromUtf8("skinAuthorLabel"))
         self.skinAuthor = QtGui.QLabel(self.skinsTab)
-        self.skinAuthor.setGeometry(QtCore.QRect(70, 170, 181, 20))
+        self.skinAuthor.setGeometry(QtCore.QRect(70, 170, 111, 20))
         self.skinAuthor.setObjectName(_fromUtf8("skinAuthor"))
         self.skinVersion = QtGui.QLabel(self.skinsTab)
-        self.skinVersion.setGeometry(QtCore.QRect(70, 190, 31, 20))
+        self.skinVersion.setGeometry(QtCore.QRect(70, 190, 181, 20))
         self.skinVersion.setObjectName(_fromUtf8("skinVersion"))
         self.skinVersionLabel = QtGui.QLabel(self.skinsTab)
         self.skinVersionLabel.setGeometry(QtCore.QRect(10, 190, 51, 20))
@@ -116,6 +109,12 @@ class Ui_MainWindow(object):
         self.SkinPreviewImage.setScaledContents(True)
         self.SkinPreviewImage.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
         self.SkinPreviewImage.setObjectName(_fromUtf8("SkinPreviewImage"))
+        self.BTN_installSkin = QtGui.QPushButton(self.skinsTab)
+        self.BTN_installSkin.setEnabled(True)
+        self.BTN_installSkin.setGeometry(QtCore.QRect(170, 350, 81, 23))
+        self.BTN_installSkin.setAutoFillBackground(False)
+        self.BTN_installSkin.setCheckable(False)
+        self.BTN_installSkin.setObjectName(_fromUtf8("BTN_installSkin"))
         self.tabWidget.addTab(self.skinsTab, _fromUtf8(""))
         self.configTab = QtGui.QWidget()
         self.configTab.setObjectName(_fromUtf8("configTab"))
@@ -278,9 +277,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QtGui.QApplication.translate("MainWindow", "SCGUI Beta", None, QtGui.QApplication.UnicodeUTF8))
-        self.BTN_installSkin.setText(QtGui.QApplication.translate("MainWindow", "Install", None, QtGui.QApplication.UnicodeUTF8))
-        self.skinLinkLabel.setStatusTip(QtGui.QApplication.translate("MainWindow", "Visit the skins section of the website", None, QtGui.QApplication.UnicodeUTF8))
-        self.skinLinkLabel.setText(QtGui.QApplication.translate("MainWindow", "Download more skins online", None, QtGui.QApplication.UnicodeUTF8))
+        self.BTN_uninstallSkin.setText(QtGui.QApplication.translate("MainWindow", "Remove", None, QtGui.QApplication.UnicodeUTF8))
         self.BTN_skinFolder.setToolTip(QtGui.QApplication.translate("MainWindow", "Open the skins folder in Explorer", None, QtGui.QApplication.UnicodeUTF8))
         self.BTN_skinFolder.setText(QtGui.QApplication.translate("MainWindow", "Open Skins Folder", None, QtGui.QApplication.UnicodeUTF8))
         self.skinName.setText(QtGui.QApplication.translate("MainWindow", "Base", None, QtGui.QApplication.UnicodeUTF8))
@@ -294,6 +291,7 @@ class Ui_MainWindow(object):
         self.skinWebsite.setStatusTip(QtGui.QApplication.translate("MainWindow", "Visit the authors website", None, QtGui.QApplication.UnicodeUTF8))
         self.skinWebsite.setText(QtGui.QApplication.translate("MainWindow", "http://www.example.com", None, QtGui.QApplication.UnicodeUTF8))
         self.skinInfoLabel.setText(QtGui.QApplication.translate("MainWindow", "About", None, QtGui.QApplication.UnicodeUTF8))
+        self.BTN_installSkin.setText(QtGui.QApplication.translate("MainWindow", "Install", None, QtGui.QApplication.UnicodeUTF8))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.skinsTab), QtGui.QApplication.translate("MainWindow", "Skins", None, QtGui.QApplication.UnicodeUTF8))
         self.BTN_updateCfg.setText(QtGui.QApplication.translate("MainWindow", "Update", None, QtGui.QApplication.UnicodeUTF8))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.configTab), QtGui.QApplication.translate("MainWindow", "Config", None, QtGui.QApplication.UnicodeUTF8))
