@@ -7,17 +7,35 @@ import distutils.dir_util
 import subprocess
 import win32api, win32con
 
+# Import bits to read edit configs like settings.ini
+from ConfigParser import SafeConfigParser
+
 class klutchguitool():
-    def __init__(self):        
-        self.steamname = ""
-        self.skinspath = os.path.join(os.environ["ProgramFiles(x86)"],"SCGUI\Skins")
+    def __init__(self): 
         
-        # Use skins from dev
-        #self.skinspath = "C:\Users\Stunjelly3\workspace\scgui\Skins"
+        self.version = "1.0"
+        
+        self.settings = SafeConfigParser(allow_no_value=True)
+        if not os.path.exists("settings.ini"):
+            print "settings.ini doesn't exist so making a fresh one"
+            # lets create that config file for next time...
+            cfgfile = open("settings.ini",'w')
+            # add the settings to the structure of the file, and lets write it out...
+            self.settings.add_section('main')
+            self.settings.set('main','version', self.version)
+            self.settings.set('main','steamname', '')
+            self.settings.set('main','cstrike', 'C:\Program Files (x86)\Steam\steamapps\%(steamname)s\counter-strike source\cstrike')
+            self.settings.set('main','installedskin', '')
+            self.settings.write(cfgfile)
+            cfgfile.close() 
+        self.settings.read('settings.ini')        
+        
+        self.steamname = self.settings.get('main', 'steamname')
+        self.skinspath = os.path.join(os.environ["ProgramFiles(x86)"],"SCGUI\Skins")
+        self.cspath=os.path.join(os.environ["ProgramFiles(x86)"],"Steam/steamapps",self.steamname,"counter-strike source/cstrike")
         
         self.installedskin = {"Skin":"Welcome to KLUTCH's GUI Tool","Version":"No Skin Detected","Author":"Get involved at SCGUI.com","Type":"No Skin Detected","Info":"Select a skin from the drop down box above and install! Please report any bugs to scgui.com"}
         self.skindetails = {"Skin":"","Version":"","Author":"","Type":"","Info":""}
-        self.cspath=os.path.join(os.environ["ProgramFiles(x86)"],"Steam/steamapps",self.steamname,"counter-strike source/cstrike")
         self.specsettings ={"t1name":"","t1url":"","t1flag":"","t2name":"","t2url":"","t2flag":""}
         self.cfgsettings ={"spec_player":"","hud_saytext_time":"","hud_deathnotice_time":"","spec_autodirector":"","spec_scoreboard":"","spec_mode":"","net_graph":"","cl_dynamiccrosshair":"","func_break_max_pieces":"","overview_names":""}
         self.resfiles=["Spectator.res", "ScoreBoard.res"]
@@ -36,7 +54,6 @@ class klutchguitool():
                     matches = re.search(r"// \[([^\s]*?)=(.*?)\]", line)
                     if matches is not None:
                         self.skindetails[matches.group(1)] = matches.group(2)
-        print "No Skin is installed on __init__"
                         
     
     def getinstalledskin(self, accountname):
@@ -48,8 +65,22 @@ class klutchguitool():
                     matches = re.search(r"// \[([^\s]*?)=(.*?)\]", line)
                     if matches is not None:
                         self.installedskin[matches.group(1)] = matches.group(2)
+                
+                if re.search(r"// \[Skin=[^\]]*?\]", line):
+                    matches = re.search(r"// \[Skin=(.*?)\]", line)
+                    print matches.group(1)
+                    # This will then open and write the installedskin to the settings
+                    cfgfile = open("settings.ini", "w")            
+                    self.settings.set('main', 'installedskin', matches.group(1))
+                    self.settings.write(cfgfile)
+                    cfgfile.close()
         else:
             print "Warning: No skin installed or incorrect steam username."
+            # This will then open and write the installedskin to the settings
+            cfgfile = open("settings.ini", "w")            
+            self.settings.set('main', 'installedskin', '')
+            self.settings.write(cfgfile)
+            cfgfile.close()
     
     # This will remove all skins from the cstrike dir
     def count_files(self,in_directory):
@@ -61,15 +92,15 @@ class klutchguitool():
         )
     
     def uninstallskin(self, status):
-        currentskindir = os.path.join(self.skinspath,self.installedskin["Skin"])
+        currentskindir = os.path.join(self.skinspath,self.settings.get('main','installedskin'))
         print "___UNINSTALLING_SKIN________________________________________________"
         for subdir, dirs, files in os.walk(currentskindir):
             for name in files:
                 filepath = os.path.join(subdir,name)
                 filepathrel = os.path.relpath(filepath, currentskindir)
                 filepathmain = os.path.normpath(os.path.join(self.cspath, filepathrel))
-                fileAtt = win32api.GetFileAttributes(filepathmain)
                 if os.path.exists(filepathmain):
+                    fileAtt = win32api.GetFileAttributes(filepathmain)
                     if (fileAtt & win32con.FILE_ATTRIBUTE_READONLY):
                         # File is read-only, so make it writeable
                         win32api.SetFileAttributes(filepathmain, ~win32con.FILE_ATTRIBUTE_READONLY)
@@ -79,7 +110,11 @@ class klutchguitool():
                 if os.path.exists(filebasemain) and os.listdir(filebasemain) == []:
                     os.rmdir(filebasemain)
                     print "Removing folder "+filebasemain+"..."
-                    
+        # This will then open and write the installedskin to the settings
+        cfgfile = open("settings.ini", "w")            
+        self.settings.set('main', 'installedskin', '')
+        self.settings.write(cfgfile)
+        cfgfile.close()
         print "____________________________________________________________________"
         print "Files have been removed."
     
@@ -87,7 +122,14 @@ class klutchguitool():
     def installskin(self, desiredskin):  
         dirtydesiredskindir = os.path.join(self.skinspath, desiredskin)
         desiredskindir = os.path.normpath(dirtydesiredskindir)
-        distutils.dir_util.copy_tree(desiredskindir, self.cspath)
+        distutils.dir_util.copy_tree(desiredskindir, self.settings.get('main', 'cstrike'))
+        
+        # This will then open and write our new desiredskin to the settings
+        cfgfile = open("settings.ini", "w")            
+        self.settings.set('main', 'installedskin', desiredskin)
+        self.settings.write(cfgfile)
+        cfgfile.close()
+        
         print "____________________________________________________________________"
         print desiredskin + " installed successfully."
         
@@ -154,20 +196,3 @@ class klutchguitool():
     def opencstrikefolder(self):
         subprocess.Popen('explorer ' + os.path.normpath(self.cspath))
         print os.path.normpath(self.cspath)
-
-#makedo.readfiles()
-#makedo.specsettings["t1name"]="Team VeryGames"
-#makedo.specsettings["t1url"]="www.team-verygames.com"
-#makedo.specsettings["t1flag"]="../vgui/klutch/team/VeryGames"
-#makedo.specsettings["t2name"]="Copenhagen WOLVES"
-#makedo.specsettings["t2url"]="www.copenhagenwolves.com"
-#makedo.specsettings["t2flag"]="../vgui/klutch/team/Wolves"
-
-#print makedo.specsettings
-#print makedo.cfgsettings
-#makedo.uninstallskin()
-#scgui.installskin('Base')
-#makedo.listskins()
-#makedo.editcfg(makedo.cfgfiles[1])
-#makedo.editres(makedo.resfiles[0])
-#makedo.launchcs()

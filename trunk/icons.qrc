@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="icons">
+    <file>aboutbg.jpg</file>
     <file>default.jpg</file>
     <file>icons/folder.png</file>
     <file>icons/folders_explorer.png</file>
