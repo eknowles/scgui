@@ -5,6 +5,7 @@ import shutil
 import commands
 import distutils.dir_util
 import subprocess
+import operator
 import win32api, win32con
 import sys
 
@@ -25,20 +26,18 @@ class klutchguitool():
             self.settings.add_section('main')
             self.settings.set('main','version', self.version)
             self.settings.set('main','steamname', '')
-            self.settings.set('main','cstrike', 'C:\Program Files (x86)\Steam\steamapps\%(steamname)s\counter-strike source\cstrike')
+            self.settings.set('main','cstrike', os.environ["ProgramFiles(x86)"]+'\Steam\steamapps\%(steamname)s\counter-strike source\cstrike')
             self.settings.add_section('skin')
             self.settings.set('skin','installedskin', '')
             self.settings.set('skin','teambar', '')
             self.settings.set('skin','playerbar', '')
             self.settings.write(cfgfile)
             cfgfile.close() 
-        self.settings.read('settings.ini')        
-        
+        self.settings.read('settings.ini')
         self.steamname = self.settings.get('main', 'steamname')
         #self.skinspath = os.path.join(os.environ["ProgramFiles(x86)"],"SCGUI\Skins")
         self.skinspath = os.path.join(os.path.dirname(sys.argv[0]),"Skins")
         self.cspath=os.path.join(os.environ["ProgramFiles(x86)"],"Steam/steamapps",self.steamname,"counter-strike source/cstrike")
-        
         self.installedskin = {"Skin":"Welcome to KLUTCH's GUI Tool","Version":"No Skin Detected","Author":"Get involved at SCGUI.com","Type":"No Skin Detected","Info":"Select a skin from the drop down box above and install! Please report any bugs to scgui.com"}
         self.skindetails = {"Skin":"","Version":"","Author":"","Type":"","Info":"","TeamBar":"","PlayerBar":""}
         self.specsettings ={"t1name":"","t1url":"","t1flag":"","t2name":"","t2url":"","t2flag":"","playername":"", "playerflag":""}

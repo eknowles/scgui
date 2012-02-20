@@ -46,7 +46,7 @@
        </sizepolicy>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>3</number>
       </property>
       <widget class="QWidget" name="settingsTab">
        <attribute name="icon">
@@ -510,18 +510,7 @@
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout_3">
         <item>
-         <widget class="QTableWidget" name="cfgTable">
-          <column>
-           <property name="text">
-            <string>Console Variable</string>
-           </property>
-          </column>
-          <column>
-           <property name="text">
-            <string>Value</string>
-           </property>
-          </column>
-         </widget>
+         <widget class="QTableView" name="tableView"/>
         </item>
         <item>
          <widget class="QPushButton" name="BTN_refreshCfg">
@@ -594,6 +583,9 @@
          <property name="whatsThis">
           <string/>
          </property>
+         <property name="placeholderText">
+          <string>Counter-Terrorists</string>
+         </property>
         </widget>
         <widget class="QLabel" name="t1nameLabel">
          <property name="enabled">
@@ -661,6 +653,9 @@
            <height>21</height>
           </rect>
          </property>
+         <property name="editable">
+          <bool>false</bool>
+         </property>
          <property name="frame">
           <bool>true</bool>
          </property>
@@ -714,6 +709,9 @@
          </property>
          <property name="statusTip">
           <string>Enter the Terrorist team name</string>
+         </property>
+         <property name="placeholderText">
+          <string>Terrorists</string>
          </property>
         </widget>
         <widget class="QLabel" name="t2nameLabel">
@@ -861,6 +859,9 @@
         </property>
        </widget>
        <widget class="QGroupBox" name="playergroup">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
         <property name="geometry">
          <rect>
           <x>10</x>
@@ -905,6 +906,9 @@
          </property>
          <property name="statusTip">
           <string>Enter the Terrorist team name</string>
+         </property>
+         <property name="placeholderText">
+          <string>Edward 'KLUTCH' Knowles</string>
          </property>
         </widget>
         <widget class="QComboBox" name="comboBox_playerflag">

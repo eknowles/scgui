@@ -37,14 +37,11 @@ class Main(QtGui.QMainWindow):
         self.kgui=scgui.klutchguitool()
         # On launch find out if a skin is installed and refresh the array with info
         self.kgui.getinstalledskin(self.kgui.steamname)
-        
         if self.kgui.settings.get('skin', 'installedskin') == "":
             print "No Skin is installed on main __init__"
         else:
             print "Found '" + self.kgui.settings.get('skin', 'installedskin') + "' installed on main __init__"
-            
         print self.kgui.settings.get('main', 'cstrike')
-        
         self.skinchosen(self.kgui.installedskin["Skin"])
         #kgui.installskin("Base")
         self.ui.skinName.setText(self.kgui.installedskin["Skin"])
@@ -52,37 +49,29 @@ class Main(QtGui.QMainWindow):
         self.ui.skinVersion.setText(self.kgui.installedskin["Version"])
         self.ui.skinType.setText(self.kgui.installedskin["Type"])
         self.ui.skinDescription.setPlainText(self.kgui.installedskin["Info"])
-        
         if not self.kgui.steamname == "":
             self.setWindowTitle("SCGUI " + self.kgui.settings.get('main', 'version') + " - " + self.kgui.steamname)
         else:
             self.setWindowTitle("SCGUI " + self.kgui.settings.get('main', 'version') + " - Unregistered")
-    
         # This gets the available skins into the combobox
         self.ui.comboBox_skins.addItems(os.listdir(self.kgui.skinspath))
-    
         # Set the preview image as the installed skin
         self.ui.SkinPreviewImage.setPixmap(QtGui.QPixmap("default.jpg"))
         # Connects the combo box to the update skins chosen def
         self.connect(self.ui.comboBox_skins, QtCore.SIGNAL('activated(QString)'), self.skinchosen)
-        
         #Folder buttons
         self.ui.BTN_skinFolder.clicked.connect(self.kgui.openskinsfolder)
         self.ui.BTN_cstrikeFolder.clicked.connect(self.kgui.opencstrikefolder)
-        
         #install/uninstall buttons
         self.ui.BTN_uninstallSkin.clicked.connect(self.clickedremoveskin)
         self.ui.BTN_uninstallSkin.setEnabled(False)
         self.ui.BTN_installSkin.clicked.connect(self.clickedinstallskin)
         self.ui.BTN_installSkin.setEnabled(False)
-        
         self.ui.BTN_launchCSSpec.clicked.connect(self.kgui.launchcs)
-        
         #Steam account connection
         self.ui.steaminput.setText(self.kgui.settings.get('main', 'steamname'))
         self.ui.BTN_steamname.setAutoDefault(True)
         self.ui.BTN_steamname.clicked.connect(self.setsteamname)
-        
         self.ui.BTN_refreshteams.clicked.connect(self.resetteamtab)
         self.ui.BTN_updateTeams.clicked.connect(self.applyteamupdate)
         self.ui.BTN_swapSides.clicked.connect(self.clickedswapteams)
@@ -262,21 +251,21 @@ class Main(QtGui.QMainWindow):
         # Set the teams tab enables
         if not self.kgui.skindetails["TeamBar"] == "yes":
             #Disable team groups
-            self.ui.teamgrouphome.setFlat(False)
-            self.ui.teamgroupaway.setFlat(False)
+            self.ui.teamgrouphome.setEnabled(False)
+            self.ui.teamgroupaway.setEnabled(False)
             print "disabled team groups"
         else:
             #Enable team groups
-            self.ui.teamgrouphome.setFlat(True)
-            self.ui.teamgroupaway.setFlat(True)
+            self.ui.teamgrouphome.setEnabled(True)
+            self.ui.teamgroupaway.setEnabled(True)
             print "enabled team groups"
         if not self.kgui.skindetails["PlayerBar"] == "yes":
             #Disable PlayerBar
-            self.ui.playergroup.setFlat(False)
+            self.ui.playergroup.setEnabled(False)
             print "disabled player group"
         else:
             #Enable PlayerBar
-            self.ui.playergroup.setFlat(True)
+            self.ui.playergroup.setEnabled(True)
             print "enabled player group"
             
         
