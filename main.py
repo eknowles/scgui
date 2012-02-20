@@ -4,7 +4,7 @@ import sys
 import webbrowser
 import scgui
 
-from PyQt4 import QtCore,QtGui
+from PyQt4 import QtCore,QtGui,QtNetwork
 from windowUi import Ui_MainWindow
 """
 
@@ -26,15 +26,22 @@ class Main(QtGui.QMainWindow):
         self.ui=Ui_MainWindow()
         self.ui.setupUi(self)
         
+#        self.ui.twitter.setAttribute(QWebSettings::JavascriptEnabled, true)
+#        self.ui.twitter.setAttribute(QWebSettings::PluginsEnabled, true)
+#        self.ui.twitter.setAttribute(QWebSettings::AutoLoadImages, true)
+#        self.ui.twitter.setAttribute(QWebSettings::JavaEnabled, false)
+#        self.ui.twitter.setAttribute(QWebSettings::JavascriptCanOpenWindows, true)
+        
+        
         # makes an instance of scgui as kgui so use kgui to get the functions from scgui
         self.kgui=scgui.klutchguitool()
         # On launch find out if a skin is installed and refresh the array with info
         self.kgui.getinstalledskin(self.kgui.steamname)
         
-        if self.kgui.settings.get('main', 'installedskin') == "":
+        if self.kgui.settings.get('skin', 'installedskin') == "":
             print "No Skin is installed on main __init__"
         else:
-            print "Found '" + self.kgui.settings.get('main', 'installedskin') + "' installed on main __init__"
+            print "Found '" + self.kgui.settings.get('skin', 'installedskin') + "' installed on main __init__"
             
         print self.kgui.settings.get('main', 'cstrike')
         
@@ -44,7 +51,7 @@ class Main(QtGui.QMainWindow):
         self.ui.skinAuthor.setText(self.kgui.installedskin["Author"])
         self.ui.skinVersion.setText(self.kgui.installedskin["Version"])
         self.ui.skinType.setText(self.kgui.installedskin["Type"])
-        self.ui.skinDescription.setText(self.kgui.installedskin["Info"])
+        self.ui.skinDescription.setPlainText(self.kgui.installedskin["Info"])
         
         if not self.kgui.steamname == "":
             self.setWindowTitle("SCGUI " + self.kgui.settings.get('main', 'version') + " - " + self.kgui.steamname)
@@ -79,8 +86,10 @@ class Main(QtGui.QMainWindow):
         self.ui.BTN_refreshteams.clicked.connect(self.resetteamtab)
         self.ui.BTN_updateTeams.clicked.connect(self.applyteamupdate)
         self.ui.BTN_swapSides.clicked.connect(self.clickedswapteams)
+        self.ui.BTN_refreshCfg.clicked.connect(self.cfgrefresh)
         
-         
+    def cfgrefresh(self):
+        self.kgui.cfgfileinterp(self.kgui.cfgfiles[0])
     
     def resetteamtab(self):
         self.kgui.readfiles()
@@ -184,10 +193,21 @@ class Main(QtGui.QMainWindow):
             , self.kgui.skindetails["Skin"] + " was removed successfully. You now have a clean game folder."
             , QtGui.QMessageBox.Ok)
         
+        if self.kgui.skindetails["Skin"] == self.kgui.settings.get('skin', 'installedskin'):           
+            #print "Skin: " + self.kgui.settings.get('main', 'installedskin') + " is installed"
+            self.ui.BTN_installSkin.setEnabled(False)
+            self.ui.BTN_uninstallSkin.setEnabled(True)
+            self.ui.skinName.setText(self.kgui.skindetails["Skin"] + " (Installed)")
+        else:
+            self.ui.BTN_uninstallSkin.setEnabled(False)
+            self.ui.BTN_installSkin.setEnabled(True)
+            self.ui.skinName.setText(self.kgui.skindetails["Skin"])
+            #print "Skin: " + self.kgui.settings.get('main', 'installedskin') + " is NOT installed"
+        
 
     def clickedinstallskin(self):
         if not self.kgui.settings.get('main', 'steamname') == "":
-            if self.kgui.settings.get('main', 'installedskin') == "":
+            if self.kgui.settings.get('skin', 'installedskin') == "":
                 self.kgui.installskin(self.kgui.skindetails["Skin"])
                 QtGui.QMessageBox.information(self
                     , "Skin installed"
@@ -207,6 +227,17 @@ class Main(QtGui.QMainWindow):
                 , QtGui.QMessageBox.Ok)
             print "Warning: Please set your steam account name before trying to install a skin"
             
+        if self.kgui.skindetails["Skin"] == self.kgui.settings.get('skin', 'installedskin'):           
+            #print "Skin: " + self.kgui.settings.get('main', 'installedskin') + " is installed"
+            self.ui.BTN_installSkin.setEnabled(False)
+            self.ui.BTN_uninstallSkin.setEnabled(True)
+            self.ui.skinName.setText(self.kgui.skindetails["Skin"] + " (Installed)")
+        else:
+            self.ui.BTN_uninstallSkin.setEnabled(False)
+            self.ui.BTN_installSkin.setEnabled(True)
+            self.ui.skinName.setText(self.kgui.skindetails["Skin"])
+            #print "Skin: " + self.kgui.settings.get('main', 'installedskin') + " is NOT installed"
+            
     
     def skinchosen(self, text):
         # makes an instance of scgui as kgui so use kgui to get the functions from scgui
@@ -218,7 +249,7 @@ class Main(QtGui.QMainWindow):
         self.ui.skinAuthor.setText(self.kgui.installedskin["Author"])
         self.ui.skinVersion.setText(self.kgui.installedskin["Version"])
         self.ui.skinType.setText(self.kgui.installedskin["Type"])
-        self.ui.skinDescription.setText(self.kgui.installedskin["Info"])
+        self.ui.skinDescription.setPlainText(self.kgui.installedskin["Info"])
         
         self.kgui.getskindetails(str(text))
         self.ui.SkinPreviewImage.setPixmap(QtGui.QPixmap(os.path.join(self.kgui.skinspath, self.kgui.skindetails["Skin"], "preview.jpg")))
@@ -226,9 +257,30 @@ class Main(QtGui.QMainWindow):
         self.ui.skinAuthor.setText(self.kgui.skindetails["Author"])
         self.ui.skinVersion.setText(self.kgui.skindetails["Version"])
         self.ui.skinType.setText(self.kgui.skindetails["Type"])
-        self.ui.skinDescription.setText(self.kgui.skindetails["Info"])
+        self.ui.skinDescription.setPlainText(self.kgui.skindetails["Info"])
         
-        if self.kgui.skindetails["Skin"] == self.kgui.settings.get('main', 'installedskin'):
+        # Set the teams tab enables
+        if not self.kgui.skindetails["TeamBar"] == "yes":
+            #Disable team groups
+            self.ui.teamgrouphome.setFlat(False)
+            self.ui.teamgroupaway.setFlat(False)
+            print "disabled team groups"
+        else:
+            #Enable team groups
+            self.ui.teamgrouphome.setFlat(True)
+            self.ui.teamgroupaway.setFlat(True)
+            print "enabled team groups"
+        if not self.kgui.skindetails["PlayerBar"] == "yes":
+            #Disable PlayerBar
+            self.ui.playergroup.setFlat(False)
+            print "disabled player group"
+        else:
+            #Enable PlayerBar
+            self.ui.playergroup.setFlat(True)
+            print "enabled player group"
+            
+        
+        if self.kgui.skindetails["Skin"] == self.kgui.settings.get('skin', 'installedskin'):
             #print "Skin: " + self.kgui.settings.get('main', 'installedskin') + " is installed"
             self.ui.BTN_installSkin.setEnabled(False)
             self.ui.BTN_uninstallSkin.setEnabled(True)
