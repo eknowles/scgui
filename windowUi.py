@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'scgui.ui'
 #
-# Created: Mon Feb 20 00:25:32 2012
-#      by: PyQt4 UI code generator 4.9
+# Created: Mon Feb 20 15:56:15 2012
+#      by: PyQt4 UI code generator 4.9.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -175,15 +175,9 @@ class Ui_MainWindow(object):
         self.configTab.setObjectName(_fromUtf8("configTab"))
         self.verticalLayout_3 = QtGui.QVBoxLayout(self.configTab)
         self.verticalLayout_3.setObjectName(_fromUtf8("verticalLayout_3"))
-        self.cfgTable = QtGui.QTableWidget(self.configTab)
-        self.cfgTable.setObjectName(_fromUtf8("cfgTable"))
-        self.cfgTable.setColumnCount(2)
-        self.cfgTable.setRowCount(0)
-        item = QtGui.QTableWidgetItem()
-        self.cfgTable.setHorizontalHeaderItem(0, item)
-        item = QtGui.QTableWidgetItem()
-        self.cfgTable.setHorizontalHeaderItem(1, item)
-        self.verticalLayout_3.addWidget(self.cfgTable)
+        self.tableView = QtGui.QTableView(self.configTab)
+        self.tableView.setObjectName(_fromUtf8("tableView"))
+        self.verticalLayout_3.addWidget(self.tableView)
         self.BTN_refreshCfg = QtGui.QPushButton(self.configTab)
         self.BTN_refreshCfg.setEnabled(True)
         self.BTN_refreshCfg.setObjectName(_fromUtf8("BTN_refreshCfg"))
@@ -225,6 +219,7 @@ class Ui_MainWindow(object):
         self.comboBox_t1flag = QtGui.QComboBox(self.teamgrouphome)
         self.comboBox_t1flag.setEnabled(True)
         self.comboBox_t1flag.setGeometry(QtCore.QRect(82, 80, 211, 21))
+        self.comboBox_t1flag.setEditable(False)
         self.comboBox_t1flag.setFrame(True)
         self.comboBox_t1flag.setObjectName(_fromUtf8("comboBox_t1flag"))
         self.t1flagLabel = QtGui.QLabel(self.teamgrouphome)
@@ -284,6 +279,7 @@ class Ui_MainWindow(object):
         self.BTN_swapSides.setIcon(icon7)
         self.BTN_swapSides.setObjectName(_fromUtf8("BTN_swapSides"))
         self.playergroup = QtGui.QGroupBox(self.teamsTab)
+        self.playergroup.setEnabled(True)
         self.playergroup.setGeometry(QtCore.QRect(10, 250, 311, 81))
         self.playergroup.setObjectName(_fromUtf8("playergroup"))
         self.t2nameLabel_2 = QtGui.QLabel(self.playergroup)
@@ -376,7 +372,7 @@ class Ui_MainWindow(object):
         self.menubar.addAction(self.menuHelp.menuAction())
 
         self.retranslateUi(MainWindow)
-        self.tabWidget.setCurrentIndex(2)
+        self.tabWidget.setCurrentIndex(3)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -409,21 +405,19 @@ class Ui_MainWindow(object):
         self.BTN_launchCSSpec.setStatusTip(QtGui.QApplication.translate("MainWindow", "Launch CS:Source in Movie Mode", None, QtGui.QApplication.UnicodeUTF8))
         self.BTN_launchCSSpec.setText(QtGui.QApplication.translate("MainWindow", "Launch CS", None, QtGui.QApplication.UnicodeUTF8))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.skinsTab), QtGui.QApplication.translate("MainWindow", "Skins", None, QtGui.QApplication.UnicodeUTF8))
-        item = self.cfgTable.horizontalHeaderItem(0)
-        item.setText(QtGui.QApplication.translate("MainWindow", "Console Variable", None, QtGui.QApplication.UnicodeUTF8))
-        item = self.cfgTable.horizontalHeaderItem(1)
-        item.setText(QtGui.QApplication.translate("MainWindow", "Value", None, QtGui.QApplication.UnicodeUTF8))
         self.BTN_refreshCfg.setText(QtGui.QApplication.translate("MainWindow", "Refresh", None, QtGui.QApplication.UnicodeUTF8))
         self.BTN_updateCfg.setText(QtGui.QApplication.translate("MainWindow", "Update", None, QtGui.QApplication.UnicodeUTF8))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.configTab), QtGui.QApplication.translate("MainWindow", "Config", None, QtGui.QApplication.UnicodeUTF8))
         self.teamgrouphome.setTitle(QtGui.QApplication.translate("MainWindow", "Home Team", None, QtGui.QApplication.UnicodeUTF8))
         self.Box_t1name.setStatusTip(QtGui.QApplication.translate("MainWindow", "Enter the Counter-Terrorist team name", None, QtGui.QApplication.UnicodeUTF8))
+        self.Box_t1name.setPlaceholderText(QtGui.QApplication.translate("MainWindow", "Counter-Terrorists", None, QtGui.QApplication.UnicodeUTF8))
         self.t1nameLabel.setText(QtGui.QApplication.translate("MainWindow", "Name", None, QtGui.QApplication.UnicodeUTF8))
         self.Box_t1url.setStatusTip(QtGui.QApplication.translate("MainWindow", "Enter the text you want under the team name", None, QtGui.QApplication.UnicodeUTF8))
         self.t1urlLabel.setText(QtGui.QApplication.translate("MainWindow", "Website", None, QtGui.QApplication.UnicodeUTF8))
         self.t1flagLabel.setText(QtGui.QApplication.translate("MainWindow", "Flag/Logo", None, QtGui.QApplication.UnicodeUTF8))
         self.teamgroupaway.setTitle(QtGui.QApplication.translate("MainWindow", "Away Team", None, QtGui.QApplication.UnicodeUTF8))
         self.Box_t2name.setStatusTip(QtGui.QApplication.translate("MainWindow", "Enter the Terrorist team name", None, QtGui.QApplication.UnicodeUTF8))
+        self.Box_t2name.setPlaceholderText(QtGui.QApplication.translate("MainWindow", "Terrorists", None, QtGui.QApplication.UnicodeUTF8))
         self.t2nameLabel.setText(QtGui.QApplication.translate("MainWindow", "Name", None, QtGui.QApplication.UnicodeUTF8))
         self.Box_t2url.setStatusTip(QtGui.QApplication.translate("MainWindow", "Enter the text you want under the team name", None, QtGui.QApplication.UnicodeUTF8))
         self.t2urlLabel.setText(QtGui.QApplication.translate("MainWindow", "Website", None, QtGui.QApplication.UnicodeUTF8))
@@ -434,6 +428,7 @@ class Ui_MainWindow(object):
         self.playergroup.setTitle(QtGui.QApplication.translate("MainWindow", "Player Bar", None, QtGui.QApplication.UnicodeUTF8))
         self.t2nameLabel_2.setText(QtGui.QApplication.translate("MainWindow", "Full Name", None, QtGui.QApplication.UnicodeUTF8))
         self.Box_playername.setStatusTip(QtGui.QApplication.translate("MainWindow", "Enter the Terrorist team name", None, QtGui.QApplication.UnicodeUTF8))
+        self.Box_playername.setPlaceholderText(QtGui.QApplication.translate("MainWindow", "Edward \'KLUTCH\' Knowles", None, QtGui.QApplication.UnicodeUTF8))
         self.t2flagLabel_2.setText(QtGui.QApplication.translate("MainWindow", "Flag", None, QtGui.QApplication.UnicodeUTF8))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.teamsTab), QtGui.QApplication.translate("MainWindow", "Teams", None, QtGui.QApplication.UnicodeUTF8))
         self.menuFile.setTitle(QtGui.QApplication.translate("MainWindow", "File", None, QtGui.QApplication.UnicodeUTF8))
